@@ -16,7 +16,7 @@ valid_cred_list = test_data["validCreds"]
 valid_cred_dict = test_data["validCreds"][0]
 incorrect_email_list = test_data["incorrectLoginFields"]["email"]
 invalid_email_list = test_data["invalidEmails"]
-invalid_password_list = test_data["incorrectLoginFields"]["password"]
+incorrect_password_list = test_data["incorrectLoginFields"]["password"]
 
 @pytest.mark.positive
 @pytest.mark.parametrize("valid_cred", valid_cred_list)
@@ -32,9 +32,9 @@ def test_incorrect_email(login_page: LoginPage, incorrect_email: str):
     login_page.validate_invalid_creds_message()
 
 @pytest.mark.negative
-@pytest.mark.parametrize("invalid_password", invalid_password_list)
-def test_invalid_password(login_page: LoginPage, invalid_password: str):
-    login_page.login(valid_cred_dict["email"], invalid_password)
+@pytest.mark.parametrize("incorrect_password", incorrect_password_list)
+def test_incorrect_password(login_page: LoginPage, incorrect_password: str):
+    login_page.login(valid_cred_dict["email"], incorrect_password)
     login_page.validate_invalid_creds_message()
 
 @pytest.mark.negative
