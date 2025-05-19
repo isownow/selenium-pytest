@@ -1,0 +1,43 @@
+name: Selenium Testing with Pytest
+
+on:
+    push:
+        branches: [main, master]
+    pull_request:
+        branches: [main, master]
+
+jobs:
+    test:
+        timeout-minutes: 60
+        runs-on: windows-latest
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v4
+
+            - name: Set up Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "3.11.9"
+
+            - name: Install Dependencies
+              run: |
+                  python -m venv .venv
+                  .\.venv\Scripts\activate
+                  pip install -r requirements.txt
+
+            - name: Set Up ChromeDriver for Selenium
+              run: |
+                  choco install googlechrome
+                  choco install chromedriver
+
+            - name: Run Selenium Tests with Pytest
+              run: |
+                  .\.venv\Scripts\activate
+                  pytest --browser=chrome --headless=true -n 8 --html=reports/report.html
+
+            - name: Upload Test Report
+              uses: actions/upload-artifact@v4
+              with:
+                  name: test-report
+                  path: reports/
+                  retention-days: 30
