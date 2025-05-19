@@ -1,25 +1,35 @@
 import os
 import pytest
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 driver = None
 
 def pytest_addoption(parser):
     parser.addoption(
-        "--browser", action="store", default="chrome", help="Browser names: chrome, edge, firefox"
+        "--browser", action="store", default="chrome", help="Valid browser options: chrome, edge, firefox"
+    )
+    parser.addoption(
+        "--headless", action="store", default=False, help="Run browser tests in headless mode"
     )
 
 @pytest.fixture(autouse=True)
 def browserInstance(request):
     global driver
     browser = request.config.getoption("browser")
+    headless = request.config.getoption("headless")
+
+    options = Options()
+
+    if headless:
+        options.add_argument("--headless")
 
     if browser.lower() == "chrome":
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(options=options)
     elif browser.lower() == "edge":
-        driver = webdriver.Edge()
+        driver = webdriver.Edge(options=options)
     elif browser.lower() == "firefox":
-        driver = webdriver.Firefox()
+        driver = webdriver.Firefox(options=options)
     else:
         raise Exception("Browser name has not been passed or incorrect or not configured in the test.")
     
