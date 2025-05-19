@@ -1,0 +1,18 @@
+{
+    "validCreds": [
+        {
+            "name": "John",
+            "email": "johnsmith09@jon.com",
+            "password": "D0cker!Xyz"
+        }
+    ],
+    "incorrectLoginFields": {
+        "email": [
+            "johnsmith0@jon.com",
+            "johnsmith09@okay.com",
+            "invalid.email@xyu"
+        ],
+        "password": ["D0cker!Xy", "0cker!Xyz", "Docker!Xyz", "12345"]
+    },
+    "invalidEmails": ["johnsmith09@", "johnsmith09", "jonsmith@okay@jon.com"]
+}
