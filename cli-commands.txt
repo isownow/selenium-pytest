@@ -1,0 +1,19 @@
+Run all tests
+pytest -v
+
+Run tests using markers from test file
+pytest -m bdd -v
+
+Run tests using tags from feature file
+pytest -k "login" -v
+
+Run tests and generate report (pytest-html report)
+pytest -m bdd -v --html=report.html
+
+Run tests and generate report (allure report)
+pytest -m bdd -v --alluredir=allure-results
+allure generate allure-results -o allure-report --clean
+allure open allure-report
+
+Allure report to be available at:
+https://isownow.github.io/selenium-pytest/

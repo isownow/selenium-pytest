@@ -33,11 +33,24 @@ jobs:
             - name: Run Selenium Tests with Pytest
               run: |
                   .\.venv\Scripts\activate
-                  pytest --browser=chrome --headless=true -n 8 --html=reports/report.html
+                  pytest -v --browser=chrome --headless=true -n 8 --alluredir=allure-results
 
-            - name: Upload Test Report
+            - name: Generate Allure Report
+              run: allure generate allure-results -o allure-report --clean
+
+            - name: Upload Allure Report
               uses: actions/upload-artifact@v4
               with:
-                  name: test-report
-                  path: reports/
+                  name: allure-report
+                  path: allure-report/
                   retention-days: 30
+
+            - name: Checkout Repository
+              uses: actions/checkout@v4 # REQUIRED for publishing to gh-pages
+
+            - name: Publish Allure Report to GitHub Pages
+              uses: peaceiris/actions-gh-pages@v4
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_branch: gh-pages
+                  publish_dir: allure-report

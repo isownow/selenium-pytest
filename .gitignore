@@ -3,4 +3,9 @@
 .vscode/
 tests/__pycache__
 tests/page_objects/__pycache__
+tests/steps/__pycache__
 reports/
+allure-report/
+allure-results/
+assets/
+report.html
