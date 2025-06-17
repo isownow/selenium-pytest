@@ -36,10 +36,7 @@ jobs:
                   pytest -v --browser=chrome --headless=true -n 8 --alluredir=allure-results
 
             - name: Install Allure CLI
-              run: |
-                  curl -o allure.zip -L https://github.com/allure-framework/allure2/releases/latest/download/allure-commandline.zip
-                  unzip allure.zip -d allure
-                  echo "$(pwd)/allure/bin" >> $GITHUB_PATH
+              uses: simple-elf/allure-report-action@v1
 
             - name: Verify Allure Installation
               run: allure --version
