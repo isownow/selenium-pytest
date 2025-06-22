@@ -1,5 +1,6 @@
 import os
 import pytest
+import allure
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
@@ -37,6 +38,10 @@ def browserInstance(request):
     driver.implicitly_wait(5)
     yield driver
     driver.quit()
+
+def pytest_bdd_before_scenario(feature, scenario):
+    allure.dynamic.feature(feature.name)
+    allure.dynamic.story(scenario.name)
 
 # @pytest.hookimpl( hookwrapper=True )
 # def pytest_runtest_makereport(item):

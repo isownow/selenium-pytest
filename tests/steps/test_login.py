@@ -1,5 +1,7 @@
 import json
-from pytest_bdd import given, when, then, parsers
+import pytest
+from pytest_bdd import given, scenarios, when, then, parsers
+from selenium.webdriver.remote.webdriver import WebDriver
 
 from tests.page_objects.login_page import LoginPage
 
@@ -12,6 +14,13 @@ valid_cred_dict = test_data["validCreds"][0]
 incorrect_email_list = test_data["incorrectLoginFields"]["email"]
 invalid_email_list = test_data["invalidEmails"]
 incorrect_password_list = test_data["incorrectLoginFields"]["password"]
+
+# Load all scenarios from the feature file  
+scenarios("../features/login.feature")  
+
+@pytest.fixture
+def login_page(browserInstance: WebDriver):
+    return LoginPage(browserInstance)
 
 @given("the user is on the login page")
 def user_on_login_page(login_page: LoginPage):
