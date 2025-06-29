@@ -1,9 +1,9 @@
-import os
 import pytest
 import allure
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
+pytest_plugins = ["tests.steps.common_steps"]
 driver = None
 
 def pytest_addoption(parser):
@@ -15,7 +15,7 @@ def pytest_addoption(parser):
     )
 
 @pytest.fixture(autouse=True)
-def browserInstance(request):
+def driver(request):
     global driver
     browser = request.config.getoption("browser")
     headless = request.config.getoption("headless")
@@ -34,7 +34,6 @@ def browserInstance(request):
     else:
         raise Exception("Browser name has not been passed or incorrect or not configured in the test.")
     
-    driver.get("https://automationexercise.com/")
     driver.implicitly_wait(5)
     yield driver
     driver.quit()
