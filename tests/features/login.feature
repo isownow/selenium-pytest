@@ -3,7 +3,8 @@ Feature: Login
     Testing scenarios for login feature
 
     Background:
-        Given the user is on the login page
+        Given the user opens the website "https://automationexercise.com/"
+        And the user goes to the login page
 
     @positive
     Scenario: Successful login

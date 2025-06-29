@@ -1,6 +1,6 @@
 import json
 import pytest
-from pytest_bdd import given, scenarios, when, then, parsers
+from pytest_bdd import scenarios, given, when, then, parsers
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from tests.page_objects.login_page import LoginPage
@@ -9,20 +9,16 @@ test_data_path = "tests/data/login_data.json"
 with open(test_data_path) as f:
     test_data = json.load(f)
 
-valid_cred_list = test_data["validCreds"]
 valid_cred_dict = test_data["validCreds"][0]
-incorrect_email_list = test_data["incorrectLoginFields"]["email"]
-invalid_email_list = test_data["invalidEmails"]
-incorrect_password_list = test_data["incorrectLoginFields"]["password"]
 
 # Load all scenarios from the feature file  
 scenarios("../features/login.feature")  
 
 @pytest.fixture
-def login_page(browserInstance: WebDriver):
-    return LoginPage(browserInstance)
+def login_page(driver: WebDriver):
+    return LoginPage(driver)
 
-@given("the user is on the login page")
+@given("the user goes to the login page")
 def user_on_login_page(login_page: LoginPage):
     login_page.go_to_login_page()
 
