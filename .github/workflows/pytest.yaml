@@ -35,8 +35,8 @@ jobs:
                   .\.venv\Scripts\activate
                   pytest -v --browser=chrome --headless=true -n 8 --alluredir=allure-results
 
-            - name: Install Allure CLI
-              uses: simple-elf/allure-report-action@v1
+            - name: Install Allure CLI on Windows
+              run: choco install allure --no-progress
 
             - name: Verify Allure Installation
               run: allure --version
