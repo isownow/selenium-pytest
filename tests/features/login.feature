@@ -44,3 +44,11 @@ Feature: Login
             | email_incomplete       | johnsmith09@          | correct          | Please enter a part following '@'. 'johnsmith09@' is incomplete.             |
             | email_without_@        | johnsmith09           | correct          | Please include an '@' in the email address. 'johnsmith09' is missing an '@'. |
             | email_domain_incorrect | jonsmith@okay@jon.com | correct          | A part following '@' should not contain the symbol '@'.                      |
+
+    # This test verifies session validity after loading cookies and performs a re-login if the server-side session is invalid or if the cookies are missing or expired on the client side.
+    @positive @login_cookies
+    Scenario: Reuse login session using cookies
+        When the cookies are not available, I log in to get the cookies else I add the cookies
+        And if the session is invalid, I login to get the cookies
+        Then the user's name should be visible on the homepage
+        And I restart the browser session, add cookies and verify successful login
