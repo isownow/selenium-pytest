@@ -12,3 +12,4 @@ assets/
 report.html
 test_cases.txt
 clickup_utils
+tests/data/*_cookies.json

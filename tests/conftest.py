@@ -16,11 +16,11 @@ def pytest_addoption(parser):
 
 @pytest.fixture(autouse=True)
 def driver(request):
-    global driver
     browser = request.config.getoption("browser")
     headless = request.config.getoption("headless")
 
     options = Options()
+    options.add_argument("--disable-gpu")
 
     if headless:
         options.add_argument("--headless")
@@ -35,8 +35,18 @@ def driver(request):
         raise Exception("Browser name has not been passed or incorrect or not configured in the test.")
     
     driver.implicitly_wait(5)
+
+    # a custom attribute to track whether the driver quit
+    driver._already_quit = False
+
     yield driver
-    driver.quit()
+
+     # Only quit if it hasn't already been quit in the test
+    if not driver._already_quit:
+        try:
+            driver.quit()
+        except:
+            pass
 
 def pytest_bdd_before_scenario(feature, scenario):
     allure.dynamic.feature(feature.name)

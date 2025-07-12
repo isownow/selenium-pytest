@@ -15,7 +15,6 @@ class DynamicPropertiesPage:
     def wait_for_button_enablement(self, timeout=10):
         button = self.driver.find_element(*self.enableAftr_btn_locator)
         scroll_into_view(self.driver, button)
-        # self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", button)
 
         # If we don't wait here for the button to be clickable, the error received would be - selenium.common.exceptions.ElementClickInterceptedException
         WebDriverWait(self.driver, timeout).until(EC.element_to_be_clickable(self.enableAftr_btn_locator))

@@ -17,13 +17,11 @@ class MenuPage:
     def hover_on_menu_item2(self):
         menu_item_element = self.driver.find_element(*self.menu_item2_xpath_locator)
         scroll_into_view(self.driver, menu_item_element)
-        # self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", menu_item_element)
         self.actions.move_to_element(menu_item_element).perform()
 
     def verify_visibility_of_sub_menu(self, timeout=10):
         submenu = self.driver.find_element(*self.submenu_locator)
         scroll_into_view(self.driver, submenu)
-        # self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", submenu)
 
         WebDriverWait(self.driver, timeout).until(EC.visibility_of_element_located(self.submenu_locator))
 
