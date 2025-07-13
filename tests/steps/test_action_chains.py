@@ -3,6 +3,7 @@ from tests.page_objects.demoqa_menu_page import MenuPage
 from tests.page_objects.swisnl_jquery_demo_page import ContextMenuPage
 from tests.page_objects.demoqa_buttons_page import ButtonPage
 from tests.page_objects.sel08_click_and_hold_page import ClickAndHoldPage
+from tests.page_objects.theinternet_hovers_page import HoversPage
 
 # Load all the scenarios from the feature file
 scenarios("../features/action_chains.feature")
@@ -34,6 +35,14 @@ def double_click_on_btn(driver):
 @then(parsers.parse('I should see a confirmation message as "{message}"'))
 def verify_msg_after_doubleclck(driver, message: str):
     ButtonPage(driver).verify_msg_after_doubleclck(message)
+
+@when(parsers.parse('I hover over the second avatar and click on the "{link_text}" link'))
+def hover_and_click_on_second_user(driver, link_text: str):
+    HoversPage(driver).hover_and_click_on_second_user(link_text)
+
+@then("I should be navigated to the profile page")
+def verify_navigation_to_profile(driver):
+    HoversPage(driver).verify_navigation_to_profile()
 
 @when('I move "C" to the position of item "A"')
 def hold_item_C(driver):
