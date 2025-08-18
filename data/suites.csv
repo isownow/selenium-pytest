@@ -1,0 +1,37 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"Testing scenarios for login feature","5093","Login with incorrect password","","Mon Aug 18 17:00:45 UTC 2025","passed","Mon Aug 18 17:00:50 UTC 2025","","","",""
+"Testing scenarios for login feature","16720","Successful login","","Mon Aug 18 17:00:09 UTC 2025","passed","Mon Aug 18 17:00:26 UTC 2025","","","",""
+"Testing scenarios for login feature","7871","Login with incorrect password","","Mon Aug 18 17:00:26 UTC 2025","passed","Mon Aug 18 17:00:34 UTC 2025","","","",""
+"        | Method           | Behavior                                                             | Use Case                              |
+        | ---------------- | -------------------------------------------------------------------- | ------------------------------------- |
+        | `time.sleep(10)` | Waits blindly for 10 seconds, even if element is ready earlier       | ❌ Wasteful and unreliable             |
+        | `WebDriverWait`  | Waits for a specific condition with default polling every 0.5 sec    | ✅ Great for most cases                |
+        | `FluentWait`     | Like WebDriverWait, but **customizable**: poll frequency, exceptions | ✅ Advanced control over wait strategy |
+
+You need Fluent Wait when:
+👉 Timing is uncertain
+👉 You want smarter retry logic
+👉 You want to poll repeatedly for a condition without over-waiting
+👉 You need control over the waiting behavior","4853","Wait for the input field to become enabled using Fluent Wait","","Mon Aug 18 17:00:00 UTC 2025","passed","Mon Aug 18 17:00:04 UTC 2025","","","",""
+"","2367","Hover over an element and click on a revealed link","","Mon Aug 18 17:26:14 UTC 2025","passed","Mon Aug 18 17:26:16 UTC 2025","","","",""
+"","11287","Hover over a menu to reveal a submenu","","Mon Aug 18 17:00:00 UTC 2025","passed","Mon Aug 18 17:00:11 UTC 2025","","","",""
+"Testing scenarios for login feature","8215","Login with invalid email/password","","Mon Aug 18 17:00:40 UTC 2025","passed","Mon Aug 18 17:00:48 UTC 2025","","","",""
+"Testing scenarios for login feature","11413","Login with incorrect email","","Mon Aug 18 17:00:00 UTC 2025","passed","Mon Aug 18 17:00:11 UTC 2025","","","",""
+"","4679","Handle dynamic alert after form submission on TestAutomationCentral","","Mon Aug 18 17:00:00 UTC 2025","passed","Mon Aug 18 17:00:04 UTC 2025","","","",""
+"","5931","Using 'find_elements' to get all the boxes on the page","","Mon Aug 18 17:00:18 UTC 2025","passed","Mon Aug 18 17:00:24 UTC 2025","","","",""
+"","10046","Wait for hidden element to appear on The-Internet","","Mon Aug 18 17:00:09 UTC 2025","passed","Mon Aug 18 17:00:19 UTC 2025","","","",""
+"Testing scenarios for login feature","4636","Login with invalid email/password","","Mon Aug 18 17:00:42 UTC 2025","passed","Mon Aug 18 17:00:46 UTC 2025","","","",""
+"","5273","Drag and drop an element onto a target","","Mon Aug 18 17:00:00 UTC 2025","passed","Mon Aug 18 17:00:05 UTC 2025","","","",""
+"","120020","Wait for dynamically enabled button on DemoQA","","Mon Aug 18 17:00:00 UTC 2025","broken","Mon Aug 18 17:02:00 UTC 2025","","","",""
+"Testing scenarios for login feature","21418","Login with incorrect password","","Mon Aug 18 17:00:18 UTC 2025","passed","Mon Aug 18 17:00:40 UTC 2025","","","",""
+"Testing scenarios for login feature","6120","Login with invalid email/password","","Mon Aug 18 17:00:44 UTC 2025","passed","Mon Aug 18 17:00:50 UTC 2025","","","",""
+"","10570","Detect text color change on DemoQA button","","Mon Aug 18 17:26:14 UTC 2025","passed","Mon Aug 18 17:26:24 UTC 2025","","","",""
+"Testing scenarios for login feature","7753","Login with invalid email/password","","Mon Aug 18 17:00:35 UTC 2025","passed","Mon Aug 18 17:00:43 UTC 2025","","","",""
+"Testing scenarios for login feature","3229","Login with invalid email/password","","Mon Aug 18 17:00:48 UTC 2025","passed","Mon Aug 18 17:00:51 UTC 2025","","","",""
+"Testing scenarios for login feature","10283","Login with incorrect email","","Mon Aug 18 17:00:22 UTC 2025","passed","Mon Aug 18 17:00:32 UTC 2025","","","",""
+"","7838","Displaying alert on right-click context menu selection","","Mon Aug 18 17:00:18 UTC 2025","passed","Mon Aug 18 17:00:26 UTC 2025","","","",""
+"Testing scenarios for login feature","13539","Login with incorrect email","","Mon Aug 18 17:00:00 UTC 2025","passed","Mon Aug 18 17:00:13 UTC 2025","","","",""
+"Testing scenarios for login feature","11100","Login with incorrect password","","Mon Aug 18 17:00:36 UTC 2025","passed","Mon Aug 18 17:00:47 UTC 2025","","","",""
+"","120020","Double-click a button to trigger a message","","Mon Aug 18 17:00:00 UTC 2025","broken","Mon Aug 18 17:02:00 UTC 2025","","","",""
+"Testing scenarios for login feature","14505","Reuse login session using cookies","","Mon Aug 18 17:00:52 UTC 2025","passed","Mon Aug 18 17:01:07 UTC 2025","","","",""
+"","4374","Select multiple options from a dropdown","","Mon Aug 18 17:00:52 UTC 2025","passed","Mon Aug 18 17:00:57 UTC 2025","","","",""
