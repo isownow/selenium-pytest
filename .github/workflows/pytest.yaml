@@ -35,12 +35,17 @@ jobs:
                   .\.venv\Scripts\activate
                   pytest -v --browser=chrome --headless=true -n 8 --alluredir=allure-results
 
+            - name: Install Allure CLI
+              run: |
+                  curl -L -o allure.zip https://github.com/allure-framework/allure2/releases/download/2.34.1/allure-2.34.1.zip
+                  powershell -Command "Expand-Archive allure.zip -DestinationPath ."
+                  echo "${{ github.workspace }}\\allure-2.34.1\\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+            - name: Verify Allure Installation
+              run: allure --version
+
             - name: Generate Allure Report
-              uses: simple-elf/allure-report-action@v1
-              with:
-                  allure_results: allure-results
-                  allure_report: allure-report
-                  allure_server: false
+              run: allure generate allure-results -o allure-report --clean
 
             - name: Upload Allure Report
               uses: actions/upload-artifact@v4
