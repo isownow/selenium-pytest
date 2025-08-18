@@ -35,17 +35,12 @@ jobs:
                   .\.venv\Scripts\activate
                   pytest -v --browser=chrome --headless=true -n 8 --alluredir=allure-results
 
-            - name: Install Allure CLI manually
-              run: |
-                  curl -L -o allure.zip https://github.com/allure-framework/allure2/releases/download/2.34.1/allure-2.34.1.zip
-                  tar -xf allure.zip
-                  echo "${{ github.workspace }}/allure-2.34.1/bin" >> $GITHUB_PATH
-
-            - name: Verify Allure Installation
-              run: allure --version
-
             - name: Generate Allure Report
-              run: allure generate allure-results -o allure-report --clean
+              uses: actions/allure-report@v3
+              with:
+                  results_dir: allure-results
+                  report_dir: allure-report
+                  clean: true
 
             - name: Upload Allure Report
               uses: actions/upload-artifact@v4
@@ -53,9 +48,6 @@ jobs:
                   name: allure-report
                   path: allure-report/
                   retention-days: 30
-
-            - name: Checkout Repository
-              uses: actions/checkout@v4 # REQUIRED for publishing to gh-pages
 
             - name: Publish Allure Report to GitHub Pages
               uses: peaceiris/actions-gh-pages@v4
