@@ -36,7 +36,7 @@ jobs:
                   pytest -v --browser=chrome --headless=true -n 8 --alluredir=allure-results
 
             - name: Generate Allure Report
-              uses: actions/allure-report@v3
+              uses: allure-actions/allure-report@v3
               with:
                   results_dir: allure-results
                   report_dir: allure-report
