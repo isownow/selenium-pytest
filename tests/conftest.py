@@ -48,9 +48,8 @@ def driver(request):
         except:
             pass
 
-def pytest_bdd_before_scenario(feature, scenario):
+def pytest_bdd_before_scenario(feature):
     allure.dynamic.feature(feature.name)
-    allure.dynamic.story(scenario.name)
 
 # @pytest.hookimpl( hookwrapper=True )
 # def pytest_runtest_makereport(item):
