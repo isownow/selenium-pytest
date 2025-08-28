@@ -52,6 +52,19 @@ def pytest_bdd_before_scenario(feature, scenario):
     allure.dynamic.feature(feature.name)
     allure.dynamic.story(scenario.name)
 
+# Attach screenshot to Allure report on scenario failure
+@pytest.hookimpl(hookwrapper=True)
+def pytest_bdd_after_scenario(request):
+    outcome = yield
+    if outcome.excinfo:
+        driver = request.getfixturevalue('driver')
+        screenshot = driver.get_screenshot_as_png()
+        allure.attach(
+            screenshot,
+            name="screenshot_on_failure",
+            attachment_type=allure.attachment_type.PNG
+        )
+
 # @pytest.hookimpl( hookwrapper=True )
 # def pytest_runtest_makereport(item):
 #     """
