@@ -14,6 +14,8 @@ class ClickAndHoldPage:
     def move_C_to_position_A(self):
         letter_C_element = self.driver.find_element(*self.letter_C_locator)
         letter_A_element = self.driver.find_element(*self.letter_A_locator)
+        self.driver.execute_script("arguments[0].scrollIntoView(true);", letter_C_element)
+        self.driver.execute_script("arguments[0].scrollIntoView(true);", letter_A_element)
         self.actions.click_and_hold(letter_C_element)\
             .move_to_element(letter_A_element)\
             .move_by_offset(-15, 0)\
