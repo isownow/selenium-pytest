@@ -53,7 +53,7 @@ def pytest_bdd_before_scenario(feature):
 
 # Attach screenshot to Allure report on scenario failure
 @pytest.hookimpl(hookwrapper=True)
-def pytest_bdd_after_scenario(request):
+def pytest_bdd_after_scenario(request, feature, scenario):
     outcome = yield
     if outcome.excinfo:
         driver = request.getfixturevalue('driver')

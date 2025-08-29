@@ -35,7 +35,7 @@ jobs:
               continue-on-error: true
               run: |
                   .\.venv\Scripts\activate
-                  pytest -v --browser=chrome --headless=true -n 8 --alluredir=allure-results
+                  pytest -v --browser=chrome --headless=true -n 2 --alluredir=allure-results
 
             - name: Install Allure CLI
               run: |
