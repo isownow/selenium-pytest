@@ -1,6 +1,7 @@
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
+from tests.test_utilities.helpers import scroll_into_view
 
 class ClickAndHoldPage:
     def __init__(self, driver: WebDriver):
@@ -14,8 +15,7 @@ class ClickAndHoldPage:
     def move_C_to_position_A(self):
         letter_C_element = self.driver.find_element(*self.letter_C_locator)
         letter_A_element = self.driver.find_element(*self.letter_A_locator)
-        self.driver.execute_script("arguments[0].scrollIntoView(true);", letter_C_element)
-        self.driver.execute_script("arguments[0].scrollIntoView(true);", letter_A_element)
+        scroll_into_view(self.driver, letter_C_element)
         self.actions.click_and_hold(letter_C_element)\
             .move_to_element(letter_A_element)\
             .move_by_offset(-15, 0)\
